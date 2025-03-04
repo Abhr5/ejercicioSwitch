@@ -59,7 +59,7 @@ public class calculadora {
                 System.out.println("Resultado: " + resultado);
             }
 
-            // Preguntar si desea realizar otra operación
+            
             System.out.print("¿Deseas realizar otra operación? (s/n): ");
             String respuesta = escaner.next();
             if (!respuesta.equalsIgnoreCase("s")) {
