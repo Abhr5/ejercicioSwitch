@@ -1,73 +1,88 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
-public class Main{
+public class Main {
     public static void main(String[] args) {
-        Scanner escaner = new Scanner(System.in);
+        Scanner esc = new Scanner(System.in);
+        int opc;
 
-        System.out.println("Elige el tipo de Switch:");
-        System.out.println("1. Switch clásico");
-        System.out.println("2. Switch moderno");
-        int eleccion = escaner.nextInt();
+        do {
+            System.out.println("Conversor de temperatura");
+            System.out.println("Por favor, ingrese una opción: ");
+            System.out.println("1.Celsius a Fahrenheit");
+            System.out.println("2.Celsius a Kelvin");
+            System.out.println("3.Celcius a Rankine");
+            System.out.println("4.Celcius a Réaumur");
+            System.out.println("5.Fahrenheit a Celsius");
+            System.out.println("6.Fahrenheit a Kelvin");
+            System.out.println("7.Fahrenheit a Rankine");
+            System.out.println("8.Fahrenheit a Réaumur");
+            System.out.println("9.Kelvin a Celsius");
+            System.out.println("10.Kelvin a Fahrenheit");
+            System.out.println("11.Kelvin a Rankine");
+            System.out.println("12.Kelvin a Réaumur");
+            System.out.println("13.Rankine a Celsius");
+            System.out.println("14.Rankine a Fahrenheit");
+            System.out.println("15.Rankine a Kelvin");
+            System.out.println("16.Salir");
 
-        System.out.println("Se presentan a continuación los digítos designados a cada materia, uselos para saber su nota final\n 1. Cálculo integral\n 2. Programación web\n 3. Estructura de datos\n 4. Ingles I\n 5. Química I ");
-        int materia = escaner.nextInt();
-
-        if (eleccion == 1){
-
-            double notaFinal = 0;
-            switch (materia) {
-                case 1:
-                    notaFinal = 4.1;
-                    System.out.println("Su nota final en Cálculo integral es de: " + notaFinal);
-                    break;
-                case 2:
-                    notaFinal = 4.0;
-                    System.out.println("Su nota final en Programación web es de: " + notaFinal);
-                    break;
-                case 3:
-                    notaFinal = 4.4;
-                    System.out.println("Su nota final en Estructura de datos es de: " + notaFinal);
-                    break;
-                case 4:
-                    notaFinal = 4.7;
-                    System.out.println("Su nota final en Ingles I es de: " + notaFinal);
-                    break;
-                case 5:
-                    notaFinal = 4.2;
-                    System.out.println("Su nota final en Química I es de: " + notaFinal);
-                    break;
-                default:
-                    System.out.println("Número invalído");
+            while (!esc.hasNextInt()){
+                System.out.println("Error. Ingrese un número válido");
             }
-        } else if (eleccion == 2) {
-            double nota = switch (materia) {
-                case 1 -> 4.1;
-                case 2 -> 4.0;
-                case 3 -> 4.4;
-                case 4 -> 4.7;
-                case 5 -> 4.2;
-                default -> -1;
-            };
+            opc = esc.nextInt();
 
-            if (nota != -1) {
-                String clase = switch (materia) {
-                    case 1 -> "Cálculo diferencial";
-                    case 2 -> "Programación web";
-                    case 3 -> "Estructura de datos";
-                    case 4 -> "Ingles I";
-                    case 5 -> "Química I";
-                    default -> "Desconocido";
+            if (opc >= 1 && opc <= 15){
+                System.out.println("Ingrese la temperatura a convertir: ");
+
+                while (!esc.hasNextInt()){
+                    System.out.println("Error, ingrese un número válido");
+                    esc.nextInt();
+                }
+                double temperatura = esc.nextDouble();
+
+                double conversion = switch (opc){
+                    case 1 -> (temperatura * 9/5) + 32;
+                    case 2 -> temperatura + 273.15;
+                    case 3 -> (temperatura + 273.15) * 9/5;
+                    case 4 -> temperatura * 4/5;
+                    case 5 -> (temperatura - 32) * 5/9;
+                    case 6 -> (temperatura - 32) * 5/9 + 273.15;
+                    case 7 -> temperatura + 273.15;
+                    case 8 -> (temperatura - 32) * 4/9;
+                    case 9 -> temperatura - 273.15;
+                    case 10 -> (temperatura - 273.15) * 9/5 + 32;
+                    case 11 -> temperatura * 9/5;
+                    case 12 -> (temperatura - 273.15) * 4/5;
+                    case 13 -> (temperatura - 491.67) * 5/9;
+                    case 14 -> temperatura - 459.67;
+                    case 15 -> temperatura * 5/9;
+                    default -> throw new
+                            IllegalStateException("Opción inválida: " + opc);
+
                 };
-                System.out.println("Su nota en " + clase + " es = " + nota);
-            } else {
-                System.out.println("Opción inválida.");
+                 String unidadMedida = switch (opc){
+                     case 1, 10, 14 -> "°F";
+                     case 2, 6, 9, 15 -> "°K";
+                     case 3, 7, 11 -> "°R";
+                     case 4, 8, 12 -> "°Re";
+                     case 5, 13 -> "°C";
+                     default -> "";
+                 };
+                System.out.println("Resultado: " + conversion + " "+ unidadMedida);
+            } else if (opc != 16) {
+                System.out.println("Opción inválida. Intente de nuevo.");
             }
 
+            } while(opc !=16);
 
-            escaner.close();
+            System.out.println("Hasta luego!");
+            esc.close();
 
-            
         }
 
 
+
+
+
     }
-}
+
