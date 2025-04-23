@@ -2,7 +2,7 @@
 public class Libro {
     protected String titulo;
     protected String autor;
-    protected double precio; // Usamos double para el precio
+    protected double precio;
 
     public Libro(String titulo, String autor, double precio) {
         this.titulo = titulo;

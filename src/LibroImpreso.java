@@ -1,6 +1,6 @@
 
 public class LibroImpreso extends Libro {
-    private double peso; // en kilogramos (kg)
+    private double peso;
     public LibroImpreso(String titulo, String autor, double precio, double peso) {
         super(titulo, autor, precio);
         this.peso = peso;

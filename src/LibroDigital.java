@@ -1,7 +1,6 @@
 
 public class LibroDigital extends Libro {
-
-    private double tamanioArchivo; // en Megabytes (MB)
+    private double tamanioArchivo;
     public LibroDigital(String titulo, String autor, double precio, double tamanioArchivo) {
         super(titulo, autor, precio);
         this.tamanioArchivo = tamanioArchivo;
